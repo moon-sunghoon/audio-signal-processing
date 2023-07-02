@@ -10,28 +10,30 @@ class CircularBuffer(ABC):
             read_index (int) : read index for the buffer
 
     """
-    def __init__(self, size):
+    def __init__(self, size, delay):
         self.buffer = [0] * size
         self.write_index = 0
         self.read_index = 0
+        self.delay = delay
 
-    def process_frame(self, buffer_input: float, delay: int) -> float:
+    def set_delay(self, delay: int) -> None:
+        self.delay = delay
+
+    def run_buffer(self, buffer_input: float) -> float:
         """
         This function process a frame of coming input using a processing line
 
         Parameters:
             buffer_input (float): input signal
-            delay: amount of sample delayed
-
         Returns:
             buffer_ouput (float): output signal
 
         """
-        self.read_index = self.write_index - delay
+        self.read_index = self.write_index - self.delay
         if self.read_index < 0 :
             self.read_index = self.buffer
 
-        buffer_output = self.process_buffer(buffer_input, delay)
+        buffer_output = self.process_signal(buffer_input)
 
         self.write_index += 1
         if write_index > self.buffer:
@@ -40,13 +42,12 @@ class CircularBuffer(ABC):
         return buffer_output
 
     @abstractmethod
-    def process_buffer(self, buffer_input : float, delay: int) -> float:
+    def process_signal(self, buffer_input : float) -> float:
         """
         abtract method for processing line, implement a filter here.
 
         Parameters:
             buffer_input (float): input signal
-            delay: amount of sample delayed
 
         Returns:
             buffer_ouput (float): output signal
