@@ -15,9 +15,13 @@ class CircularBuffer(ABC):
         self.write_index = 0
         self.read_index = 0
         self.delay = delay
+        self.buffer_size = size
 
     def set_delay(self, delay: int) -> None:
         self.delay = delay
+
+    def get_delay(self) -> int:
+        return self.delay    
 
     def run_buffer(self, buffer_input: float) -> float:
         """
@@ -31,13 +35,13 @@ class CircularBuffer(ABC):
         """
         self.read_index = self.write_index - self.delay
         if self.read_index < 0 :
-            self.read_index = self.buffer
+            self.read_index += self.buffer_size
 
         buffer_output = self.process_signal(buffer_input)
 
         self.write_index += 1
-        if write_index > self.buffer:
-            write_index = 0
+        if self.write_index > self.buffer_size:
+            self.write_index = 0
 
         return buffer_output
 
