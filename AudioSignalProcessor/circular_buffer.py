@@ -10,7 +10,7 @@ class CircularBuffer(ABC):
             read_index (int) : read index for the buffer
 
     """
-    def __init__(self, size, delay):
+    def __init__(self, size, delay = 1):
         self.buffer = [0] * size
         self.write_index = 0
         self.read_index = 0
