@@ -1,6 +1,8 @@
+import os
 import sys
-sys.path.append('..')
-from delayline import DelayLine
+module_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, module_dir)
+from AudioSignalProcessor.delayline import DelayLine
 
 import unittest
 
