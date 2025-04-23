@@ -20,10 +20,11 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "charliermarsh.ruff"
-      ]
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"charliermarsh.ruff",
+		"mhutchie.git-graph"
+	]
     }
   }
 
