@@ -23,7 +23,8 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"charliermarsh.ruff",
-		"mhutchie.git-graph"
+		"mhutchie.git-graph",
+		"ms-python.flake8"
 	]
     }
   }
