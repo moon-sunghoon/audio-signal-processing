@@ -1,16 +1,18 @@
 from abc import ABC, abstractmethod
 
+
 class CircularBuffer(ABC):
     """
-        This class represents a circular buffer
+    This class represents a circular buffer
 
-        Properties:
-            buffer (list) : a buffer with the given size
-            write_index (int) : write index for the buffer
-            read_index (int) : read index for the buffer
+    Properties:
+        buffer (list) : a buffer with the given size
+        write_index (int) : write index for the buffer
+        read_index (int) : read index for the buffer
 
     """
-    def __init__(self, size, delay = 1):
+
+    def __init__(self, size, delay=1):
         self.buffer = [0] * size
         self.write_index = 0
         self.read_index = 0
@@ -21,7 +23,7 @@ class CircularBuffer(ABC):
         self.delay = delay
 
     def get_delay(self) -> int:
-        return self.delay    
+        return self.delay
 
     def run_buffer(self, buffer_input: float) -> float:
         """
@@ -34,7 +36,7 @@ class CircularBuffer(ABC):
 
         """
         self.read_index = self.write_index - self.delay
-        if self.read_index < 0 :
+        if self.read_index < 0:
             self.read_index += self.buffer_size
 
         buffer_output = self.process_signal(buffer_input)
@@ -46,7 +48,7 @@ class CircularBuffer(ABC):
         return buffer_output
 
     @abstractmethod
-    def process_signal(self, buffer_input : float) -> float:
+    def process_signal(self, buffer_input: float) -> float:
         """
         abtract method for processing line, implement a filter here.
 
