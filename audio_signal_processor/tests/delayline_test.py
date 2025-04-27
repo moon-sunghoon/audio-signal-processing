@@ -1,10 +1,10 @@
 import os
 import sys
+from audio_signal_processor import DelayLine
+import unittest
 module_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, module_dir)
-from AudioSignalProcessor.delayline import DelayLine
 
-import unittest
 
 class DelayLineTestCase(unittest.TestCase):
     def setUp(self) -> None:
