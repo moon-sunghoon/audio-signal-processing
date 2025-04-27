@@ -2,6 +2,7 @@ import os
 import sys
 from audio_signal_processing import DelayLine
 import unittest
+
 module_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, module_dir)
 
@@ -21,7 +22,7 @@ class DelayLineTestCase(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
     def test_output_non_default_delayed_sampe(self):
-        delay_line = DelayLine(self.sampling_rate, self.max_delay, delay = 3)
+        delay_line = DelayLine(self.sampling_rate, self.max_delay, delay=3)
         expected_output = [0.0, 0.0, 0.0, 1.5]
         output = []
         for input_frame in self.test_input:
@@ -29,5 +30,6 @@ class DelayLineTestCase(unittest.TestCase):
         print(output)
         self.assertEqual(output, expected_output)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
