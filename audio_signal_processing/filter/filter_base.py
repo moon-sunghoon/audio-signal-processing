@@ -13,8 +13,6 @@ class FilterBase:
     ----------
     transfer_function : TransferFunction
         The transfer function of the filter.
-    domain_type : Domain
-        The domain type of the filter (time or frequency)
     """
 
     transfer_function: TransferFunction
