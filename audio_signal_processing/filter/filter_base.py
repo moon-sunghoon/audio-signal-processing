@@ -18,13 +18,26 @@ class FilterBase:
     """
 
     transfer_function: TransferFunction
-    domain_type: Domain = Domain.FREQUENCY
 
     def __init__(
         self,
         enumerator: List[Union[int, float]],
         denominator: List[Union[int, float]],
-        domain_type=Domain.FREQUENCY
     ):
         self.transfer_function = TransferFunction(enumerator, denominator)
-        self.domain_type = domain_type
+
+    def apply_filter(self, signal: List[Union[int, float]]) -> List[Union[int, float]]:
+        """
+        Apply the filter to a given signal.
+
+        Parameters
+        ----------
+        signal : List[Union[int, float]]
+            The input signal to be filtered.
+
+        Returns
+        -------
+        List[Union[int, float]]
+            The filtered signal.
+        """
+        raise NotImplementedError("This method should be overridden by subclasses.")
