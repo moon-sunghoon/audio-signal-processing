@@ -1,7 +1,9 @@
-from .filter_base import FilterBase
+from dataclasses import dataclass
+from .filter_interface import FilterInterface
+
 
 @dataclass
-class LowPassFilter(FilterBase):
+class LowPassFilter(FilterInterface):
     """
     A class representing a low-pass filter.
 
