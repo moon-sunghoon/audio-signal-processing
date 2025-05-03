@@ -2,10 +2,11 @@ from dataclasses import dataclass
 from .transfer_function import TransferFunction
 from .domain import Domain
 from typing import List, Union
+from abc import ABC, abstractmethod
 
 
 @dataclass
-class FilterBase:
+class FilterInterface(ABC):
     """
     A base class for digital filters.
 
@@ -24,18 +25,19 @@ class FilterBase:
     ):
         self.transfer_function = TransferFunction(enumerator, denominator)
 
+    @abstractmethod
     def apply_filter(self, signal: List[Union[int, float]]) -> List[Union[int, float]]:
         """
         Apply the filter to a given signal.
 
         Parameters
         ----------
-        signal : List[Union[int, float]]
+        signal : list
             The input signal to be filtered.
 
         Returns
         -------
-        List[Union[int, float]]
+        list
             The filtered signal.
         """
-        raise NotImplementedError("This method should be overridden by subclasses.")
+        pass
