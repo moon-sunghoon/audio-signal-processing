@@ -2,11 +2,12 @@ from dataclasses import dataclass
 from .transfer_function import TransferFunction
 from typing import List, Union
 from abc import ABC, abstractmethod
+from .domain import Domain
 
 
 @dataclass
 class FilterInterface(ABC):
-    """ A base class for digital filters.
+    """A base class for digital filters.
 
     Args:
         transfer_function : The transfer function of the filter.
@@ -23,6 +24,6 @@ class FilterInterface(ABC):
 
     @abstractmethod
     def apply_filter(
-        self, signal: List[Union[int, float]]
+        self, signal: List[Union[int, float]], domain: Domain
     ) -> List[Union[int, float]]:
         pass
