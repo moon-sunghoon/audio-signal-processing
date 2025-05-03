@@ -14,13 +14,16 @@ class FilterInterface(ABC):
     """
 
     transfer_function: TransferFunction
+    sampling_rate: int
 
     def __init__(
         self,
         enumerator: List[Union[int, float]],
         denominator: List[Union[int, float]],
+        sampling_rate: int
     ):
         self.transfer_function = TransferFunction(enumerator, denominator)
+        self.sampling_rate = sampling_rate
 
     @abstractmethod
     def apply_filter(
