@@ -4,15 +4,11 @@ from .filter_interface import FilterInterface
 
 @dataclass
 class LowPassFilter(FilterInterface):
-    """
-    A class representing a low-pass filter.
+    """ A class representing a low-pass filter.
 
-    Attributes
-    ----------
-    cutoff_frequency : float
-        The cutoff frequency of the filter.
-    order : int
-        The order of the filter.
+    Args:
+        cutoff_frequency (float): The cutoff frequency of the filter.
+        order (int): The order of the filter.
     """
 
     cutoff_frequency: float

@@ -3,15 +3,11 @@ from dataclasses import dataclass
 
 @dataclass
 class TransferFunction:
-    """
-    A class to represent a transfer function in z domain, H(z) = B(z) / A(z).
+    """A class to represent a transfer function in z domain.
 
-    Attributes
-    ----------
-    numerator : list
-        Coefficients of the numerator polynomial.
-    denominator : list
-        Coefficients of the denominator polynomial.
+    Args:
+        numerator: Coefficients of the numerator polynomial.
+        denominator: Coefficients of the denominator polynomial.
     """
 
     numerator: list[int | float | None]

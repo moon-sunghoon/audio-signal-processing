@@ -1,19 +1,15 @@
 from dataclasses import dataclass
 from .transfer_function import TransferFunction
-from .domain import Domain
 from typing import List, Union
 from abc import ABC, abstractmethod
 
 
 @dataclass
 class FilterInterface(ABC):
-    """
-    A base class for digital filters.
+    """ A base class for digital filters.
 
-    Attributes
-    ----------
-    transfer_function : TransferFunction
-        The transfer function of the filter.
+    Args:
+        transfer_function : The transfer function of the filter.
     """
 
     transfer_function: TransferFunction
@@ -26,18 +22,7 @@ class FilterInterface(ABC):
         self.transfer_function = TransferFunction(enumerator, denominator)
 
     @abstractmethod
-    def apply_filter(self, signal: List[Union[int, float]]) -> List[Union[int, float]]:
-        """
-        Apply the filter to a given signal.
-
-        Parameters
-        ----------
-        signal : list
-            The input signal to be filtered.
-
-        Returns
-        -------
-        list
-            The filtered signal.
-        """
+    def apply_filter(
+        self, signal: List[Union[int, float]]
+    ) -> List[Union[int, float]]:
         pass
