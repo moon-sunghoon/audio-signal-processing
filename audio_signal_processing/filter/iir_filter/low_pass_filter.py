@@ -1,6 +1,5 @@
 from dataclasses import dataclass
-from .domain import Domain
-from .filter_interface import FilterInterface
+from ..filter_interface import FilterInterface
 
 
 @dataclass
@@ -20,21 +19,11 @@ class LowPassFilter(FilterInterface):
         self.cutoff_frequency = cutoff_frequency
         self.order = order
 
-    def apply_filter(self, signal, domain=Domain.TIME):
-        if domain == Domain.TIME:
-            return self._apply_time_domain_filter(signal)
-        elif domain == Domain.FREQUENCY:
-            return self._apply_frequency_domain_filter(signal)
-        else:
-            raise ValueError(
-                "Invalid domain. Use Domain.TIME or Domain.FREQUENCY."
-            )
+    def apply_filter(self, signal):
+        return self._apply_time_domain_filter(signal)
 
-    def _apply_time_domain_filter(self, signal, alpha):
+    def _apply_filter(self, signal, alpha):
         output = [0.0]
         for n in range(1, len(signal)):
             output.append((1 - alpha) * signal[n] + alpha * signal[n - 1])
-        return signal
-
-    def _apply_frequency_domain_filter(self, signal):
         return signal

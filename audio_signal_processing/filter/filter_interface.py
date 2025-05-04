@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from .transfer_function import TransferFunction
 from typing import List, Union
 from abc import ABC, abstractmethod
-from .domain import Domain
 
 
 @dataclass
@@ -27,6 +26,6 @@ class FilterInterface(ABC):
 
     @abstractmethod
     def apply_filter(
-        self, signal: List[Union[int, float]], domain: Domain
+        self, signal: List[Union[int, float]]
     ) -> List[Union[int, float]]:
         pass
